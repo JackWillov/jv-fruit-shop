@@ -1,4 +1,4 @@
-package core.basesyntax.storage;
+package core.basesyntax.db;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,6 +9,10 @@ public class Storage {
 
     public void set(String fruit, int quantity) {
         fruits.put(fruit, quantity);
+    }
+
+    public int getQuantityByFruit(String fruitName) {
+        return fruits.get(fruitName);
     }
 
     public void add(String fruit, int quantity) {

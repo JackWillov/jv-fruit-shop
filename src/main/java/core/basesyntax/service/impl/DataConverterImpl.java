@@ -1,6 +1,7 @@
-package core.basesyntax.converters;
+package core.basesyntax.service.impl;
 
 import core.basesyntax.FruitTransaction;
+import core.basesyntax.service.DataConverter;
 import java.util.List;
 
 public class DataConverterImpl implements DataConverter {

@@ -1,6 +1,6 @@
-package core.basesyntax.generator;
+package core.basesyntax.service;
 
-import core.basesyntax.storage.Storage;
+import core.basesyntax.db.Storage;
 
 public interface ReportGenerator {
     String getReport();

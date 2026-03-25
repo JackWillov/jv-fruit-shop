@@ -1,4 +1,4 @@
-package core.basesyntax.writers;
+package core.basesyntax.service;
 
 public interface FileWriter {
     void write(String result, String path);

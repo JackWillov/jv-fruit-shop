@@ -1,7 +1,7 @@
-package core.basesyntax.operations;
+package core.basesyntax.model;
 
 import core.basesyntax.FruitTransaction;
-import core.basesyntax.storage.Storage;
+import core.basesyntax.db.Storage;
 
 public interface OperationHandler {
     void operate(FruitTransaction transaction, Storage storage);

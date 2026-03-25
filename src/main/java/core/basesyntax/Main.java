@@ -1,35 +1,32 @@
 package core.basesyntax;
 
-import core.basesyntax.converters.DataConverter;
-import core.basesyntax.converters.DataConverterImpl;
-import core.basesyntax.generator.ReportGenerator;
-import core.basesyntax.generator.ReportGeneratorImpl;
-import core.basesyntax.operations.BalanceOperation;
-import core.basesyntax.operations.OperationHandler;
-import core.basesyntax.operations.PurchaseOperation;
-import core.basesyntax.operations.ReturnOperation;
-import core.basesyntax.operations.SupplyOperation;
-import core.basesyntax.readers.FileReader;
-import core.basesyntax.readers.FileReaderImpl;
-import core.basesyntax.services.ShopService;
-import core.basesyntax.services.ShopServiceImpl;
-import core.basesyntax.storage.Storage;
+import core.basesyntax.db.Storage;
+import core.basesyntax.model.BalanceOperation;
+import core.basesyntax.model.OperationHandler;
+import core.basesyntax.model.PurchaseOperation;
+import core.basesyntax.model.ReturnOperation;
+import core.basesyntax.model.SupplyOperation;
+import core.basesyntax.service.DataConverter;
+import core.basesyntax.service.FileReader;
+import core.basesyntax.service.FileWriter;
+import core.basesyntax.service.ReportGenerator;
+import core.basesyntax.service.ShopService;
+import core.basesyntax.service.impl.DataConverterImpl;
+import core.basesyntax.service.impl.FileReaderImpl;
+import core.basesyntax.service.impl.FileWriterImpl;
+import core.basesyntax.service.impl.ReportGeneratorImpl;
+import core.basesyntax.service.impl.ShopServiceImpl;
 import core.basesyntax.strategy.OperationStrategy;
 import core.basesyntax.strategy.OperationStrategyImpl;
-import core.basesyntax.writers.FileWriter;
-import core.basesyntax.writers.FileWriterImpl;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Main {
-    private static final String REPORT_TO_READ_PATH =
-            "C:\\Users\\Yulian\\IdeaProjects\\jv-fruit-shop\\src\\reportToRead.csv";
-    private static final String FINAL_REPORT_PATH = "finalReport.csv";
 
     public static void main(String[] args) {
         FileReader fileReader = new FileReaderImpl();
-        List<String> inputReport = fileReader.read(REPORT_TO_READ_PATH);
+        List<String> inputReport = fileReader.read("src/main/resources/reportToRead.csv");
 
         DataConverter dataConverter = new DataConverterImpl();
         final List<FruitTransaction> transactions = dataConverter.convertToTransaction(inputReport);
@@ -49,7 +46,7 @@ public class Main {
         String resultingReport = reportGenerator.getReport();
 
         FileWriter fileWriter = new FileWriterImpl();
-        fileWriter.write(resultingReport, FINAL_REPORT_PATH);
+        fileWriter.write(resultingReport, "src/main/resources/finalReport.csv");
 
     }
 }

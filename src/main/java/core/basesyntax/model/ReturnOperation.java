@@ -1,9 +1,9 @@
-package core.basesyntax.operations;
+package core.basesyntax.model;
 
 import core.basesyntax.FruitTransaction;
-import core.basesyntax.storage.Storage;
+import core.basesyntax.db.Storage;
 
-public class SupplyOperation implements OperationHandler {
+public class ReturnOperation implements OperationHandler {
     @Override
     public void operate(FruitTransaction transaction, Storage storage) {
         storage.add(transaction.getFruit(), transaction.getQuantity());
